@@ -9,8 +9,8 @@ class ProductionStateController extends Controller
     public function index()
     {
         $productionStates = json_decode(file_get_contents(storage_path() . "/data/ProductieStaat.json"));
-
         $result = [];
+
         foreach ($productionStates as $productionState) {
             $saw = $productionState->saw;
 
@@ -21,7 +21,8 @@ class ProductionStateController extends Controller
                 }
                 $color = $saw->profielkleur->title;
 
-                /** find all gnumber instances in the profile name
+                /**
+                 * find all gnumber instances in the profile name
                  *  pattern is either G or g, followed by one or more digits
                  */
                 preg_match_all('/[gG]\d+/', $profileName, $matches);
